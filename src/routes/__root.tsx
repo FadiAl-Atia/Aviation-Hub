@@ -6,13 +6,13 @@ import {
 } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 
-import Header from '../components/Header'
-
 import TanStackQueryLayout from '../integrations/tanstack-query/layout.tsx'
 
 import appCss from '../styles.css?url'
 
 import type { QueryClient } from '@tanstack/react-query'
+
+import Navbar from "../components/navbar.tsx";
 
 interface MyRouterContext {
   queryClient: QueryClient
@@ -29,7 +29,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Aviation Hub',
       },
     ],
     links: [
@@ -39,14 +39,10 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
       },
     ],
   }),
-
   component: () => (
     <RootDocument>
-      <Header />
-
       <Outlet />
       <TanStackRouterDevtools />
-
       <TanStackQueryLayout />
     </RootDocument>
   ),
@@ -55,9 +51,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <head>
-        <HeadContent />
-      </head>
+      <Navbar />
       <body>
         {children}
         <Scripts />
